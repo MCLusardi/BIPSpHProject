@@ -10,8 +10,8 @@
 
 import serial
 import time
-#import schedule
-
+import sys
+import os.path 
 
 def main_func():
     print('Entered main_func()')
@@ -48,7 +48,10 @@ def main_func():
 # Declare variables to be used
 
 #print('Program started')`
-file = open("newScriptTest.txt", "a")
-file.write("date, s2, s1\n")
+if os.path.isfile(sys.argv[1]):
+    file = open(sys.argv[1], "a")
+else:
+    file = open(sys.argv[1], "w")
+    file.write("date,ACM1s2,ACM1s1,ACM0s2,ACM0s1\n")
 main_func()
 file.close()
