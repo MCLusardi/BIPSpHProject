@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "pHFileReaderACM1.py", line 50, in <module>
+    main_func()
+  File "pHFileReaderACM1.py", line 17, in main_func
+    arduino_data = arduino.readline()
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 501, in read
+    'device reports readiness to read but returned no data '
+serial.serialutil.SerialException: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+Traceback (most recent call last):
+  File "pHFileReaderACM0.py", line 50, in <module>
+    main_func()
+  File "pHFileReaderACM0.py", line 17, in main_func
+    arduino_data = arduino.readline()
+  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 501, in read
+    'device reports readiness to read but returned no data '
+serial.serialutil.SerialException: device reports readiness to read but returned no data (device disconnected or multiple access on port?)
