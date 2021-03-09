@@ -16,7 +16,7 @@ void setup()
 {
   pinMode(13,OUTPUT);  
   Serial.begin(9600);  
-  Serial.println("Ready");    //Test the serial monitor
+  //Serial.println("Ready");    //Test the serial monitor
 }
 void loop()
 {
@@ -48,8 +48,5 @@ void loop()
   digitalWrite(13, HIGH);       
   delay(800);
   digitalWrite(13, LOW); 
-
+  delay(60000); // This way it will pause for 1 minute (60 seconds, 60,000 milliseconds) between reads
 }
-
-
-
