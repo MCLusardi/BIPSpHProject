@@ -1,6 +1,3 @@
-#include <DFRobot_PH.h>
-
-
 /*
  * file DFRobot_PH.ino
  * @ https://github.com/DFRobot/DFRobot_PH
@@ -19,12 +16,11 @@
  * version  V1.0
  * date  2018-04
  */
- // 3/9/2021 note: Sensor 3 on ACM0 and Sensor 4 on ACM1
 
 #include "DFRobot_PH.h"
 #include <EEPROM.h>
 
-#define PH_PIN1 A1
+#define PH_PIN A1
 float voltage,phValue,temperature = 25;
 DFRobot_PH ph;
 
@@ -32,7 +28,6 @@ void setup()
 {
     Serial.begin(115200);  
     ph.begin();
-    Serial.println("Max:14");
 }
 
 void loop()
@@ -40,16 +35,15 @@ void loop()
     static unsigned long timepoint = millis();
     if(millis()-timepoint>1000U){                  //time interval: 1s
         timepoint = millis();
-        temperature = readTemperature();            // read your temperature sensor to execute temperature compensation
-        voltage = analogRead(PH_PIN1)/1024.0*5000;   // read the voltage
-        phValue = ph.readPH(voltage,temperature);   // convert voltage to pH with temperature compensation
-        //Serial.print("temperature:");
-        //Serial.print(temperature,1);
-        //Serial.print("^C  pH:");
+        //temperature = readTemperature();         // read your temperature sensor to execute temperature compensation
+        voltage = analogRead(PH_PIN)/1024.0*5000;  // read the voltage
+        phValue = ph.readPH(voltage,temperature);  // convert voltage to pH with temperature compensation
+        Serial.print("temperature:");
+        Serial.print(temperature,1);
+        Serial.print("^C  pH:");
         Serial.println(phValue,2);
     }
     ph.calibration(voltage,temperature);           // calibration process by Serail CMD
-    delay(60000); //only take readings every 1 min
 }
 
 float readTemperature()

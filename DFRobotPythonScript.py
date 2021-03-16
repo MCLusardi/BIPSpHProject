@@ -17,9 +17,9 @@ def main_func():
     print('Entered main_func()')
     
     #Establish connections with both arduinos
-    arduino1 = serial.Serial('/dev/ttyACM1', 9600)
+    arduino1 = serial.Serial('/dev/ttyACM1', 115200)
     print('Established serial connection to arduino1')
-    arduino0 = serial.Serial('/dev/ttyACM0', 9600)
+    arduino0 = serial.Serial('/dev/ttyACM0', 115200)
     print('Established serial connection to arduino2')
     
     #Create variables to hold and decode data from each arduino
@@ -57,7 +57,7 @@ if(not os.path.isfile(sys.argv[1])):
 i=0
 print(int(sys.argv[2]))
 while(i < int(sys.argv[2])):
-    time.sleep(300) #time between readings
+    time.sleep(300) #time between readings, should be 300 for 5 min readings
     print(i)
     file = open(sys.argv[1], "a")
     main_func()
