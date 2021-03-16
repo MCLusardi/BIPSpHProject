@@ -29,6 +29,7 @@ void setup()
 {
     Serial.begin(115200);  
     ph.begin();
+    Serial.println("Max:14");
 }
 
 void loop()
@@ -39,9 +40,9 @@ void loop()
         //temperature = readTemperature();            // read your temperature sensor to execute temperature compensation
         voltage = analogRead(PH_PIN1)/1024.0*5000;   // read the voltage
         phValue = ph.readPH(voltage,temperature);   // convert voltage to pH with temperature compensation
-        Serial.print("temperature:");
-        Serial.print(temperature,1);
-        Serial.print("^C  pH:");
+        //Serial.print("temperature:");
+        //Serial.print(temperature,1);
+        Serial.print("pH:");
         Serial.println(phValue,2);
     }
     ph.calibration(voltage,temperature);           // calibration process by Serail CMD

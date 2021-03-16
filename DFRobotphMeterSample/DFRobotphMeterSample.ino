@@ -48,5 +48,5 @@ void loop()
   digitalWrite(13, HIGH);       
   delay(800);
   digitalWrite(13, LOW); 
-  delay(60000); // This way it will pause for 1 minute (60 seconds, 60,000 milliseconds) between reads
+  //delay(60000); // This way it will pause for 1 minute (60 seconds, 60,000 milliseconds) between reads
 }
