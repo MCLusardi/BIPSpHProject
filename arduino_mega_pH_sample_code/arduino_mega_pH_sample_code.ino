@@ -1,12 +1,10 @@
-//This code was written to be easy to understand.
-//Modify this code as you see fit.
-//This code will output data to the Arduino serial monitor.
-//Type commands into the Arduino serial monitor to control the pH circuit.
-//This code was written in the Arduino 1.8.9 IDE
-//An Arduino MEGA was used to test this code.
-//This code was last tested 6/2019
-
-
+// MC Lusardi - May 2021
+// This code has been adapted from the Arduino Sample code available on Atlas Scientific's website:
+// https://atlas-scientific.com/files/Arduino-Mega-pH-Sample-Code.pdf
+// This code is intened to read values from one Atlas Scientific pH micro sensor via Serial communication
+// To work, connect the sensor to serial port 3 (pins 14 and 15 on Arduino Mega)
+// To send commands to the sensor, follow the UART documentation here:
+// https://atlas-scientific.com/files/pH_EZO_Datasheet.pdf
 
 String inputstring = "";                              //a string to hold incoming data from the PC
 String sensorstring = "";                             //a string to hold the data from the Atlas Scientific product

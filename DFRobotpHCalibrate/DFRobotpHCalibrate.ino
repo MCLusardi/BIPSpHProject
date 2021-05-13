@@ -43,13 +43,13 @@ void loop()
         temperature = readTemperature();            // read your temperature sensor to execute temperature compensation
         voltage = analogRead(PH_PIN1)/1024.0*5000;   // read the voltage
         phValue = ph.readPH(voltage,temperature);   // convert voltage to pH with temperature compensation
-        //Serial.print("temperature:");
-        //Serial.print(temperature,1);
-        //Serial.print("^C  pH:");
+        Serial.print("temperature:");
+        Serial.print(temperature,1);
+        Serial.print("^C  pH:");
         Serial.println(phValue,2);
     }
     ph.calibration(voltage,temperature);           // calibration process by Serail CMD
-    delay(60000); //only take readings every 1 min
+//    delay(60000); //only take readings every 1 min
 }
 
 float readTemperature()

@@ -1,11 +1,14 @@
-//This code was written to be easy to understand.
-//Modify this code as you see fit.
-//This code will output data to the Arduino serial monitor.
-//Type commands into the Arduino serial monitor to control the pH circuit.
-//This code was written in the Arduino 1.8.9 IDE
-//An Arduino MEGA was used to test this code.
-//This code was last tested 6/2019
-
+// MC Lusardi - May 2021
+// This code has been adapted from the Arduino Sample code available on Atlas Scientific's website:
+// https://atlas-scientific.com/files/Arduino-Mega-pH-Sample-Code.pdf
+// This code is intened to read values from two Atlas Scientific pH micro sensor via Serial communication
+// To work, connect the sensors to serial port 3 (pins 14 and 15 on Arduino Mega) and serial port 2 (pins 16 and 17)
+// To send commands to the sensor, follow the UART documentation here:
+// https://atlas-scientific.com/files/pH_EZO_Datasheet.pdf
+// Each command must be preceded by what sensor it is intended for:
+// if the command is preceded by "s3:" the command is sent to the sensor connected to serial port 3
+// if the command is preceded by "s2:" the command is sent to the sensor connected to serial port 2
+// if the command is preceded by "AS:" the command is sent to both sensors. 
 
 
 String inputstring = "";                              //a string to hold incoming data from the PC
@@ -56,14 +59,14 @@ void loop() {                                         //here we go...
     sensorType = parseSensorTypeInput(inputstring);
     command = parseCommandInput(inputstring);
 
-    if(sensorType.compareTo("s2:") == 0){        //if the sensor indicated is s2 (serial port_3)
+    if(sensorType.compareTo("s3:") == 0){        //if the sensor indicated is s3 (serial port_3)
       //Serial.print("Sending command to PH: ");
       //Serial.println(command);
       
       Serial3.print(command);                         //send that command to that sensor
       Serial3.print('\r');                            //add a <CR> to the end of the string
     }
-    else if(sensorType.compareTo("s1:") == 0){        //if the sensor indicated is s1 (serial port_2)
+    else if(sensorType.compareTo("s2:") == 0){        //if the sensor indicated is s2 (serial port_2)
       //Serial.print("Sending command to PH: ");
       //Serial.println(command);
       
@@ -74,10 +77,10 @@ void loop() {                                         //here we go...
       //Serial.print("Sending command to AS: ");
       //Serial.println(command);
       
-      Serial2.print(command);                         //send that string to s1
+      Serial2.print(command);                         //send that string to s2
       Serial2.print('\r');                            //add a <CR> to the end of the string
       
-      Serial3.print(command);                         //send that string to s2
+      Serial3.print(command);                         //send that string to s3
       Serial3.print('\r');                            //add a <CR> to the end of the string
     }
     else {
@@ -89,7 +92,7 @@ void loop() {                                         //here we go...
     input_string_complete = false;  
   }
 
-
+// the commented out functions below would print data from just s3 or just s2
   /*if (pHsensor_string_complete3 == true) {            //if a string from the Atlas Scientific product has been received in its entirety
     Serial.print("s2,");
     Serial.println(pHsensorstring3);                    //send that string to the PC's serial monitor
@@ -104,6 +107,7 @@ void loop() {                                         //here we go...
     pHsensor_string_complete2 = false;                //reset the flag used to tell if we have received a completed string from the Atlas Scientific product
   }*/
 
+// if both s3 and s2 have sent data, this funciton will print each value in the order "s3, s2"
   if (pHsensor_string_complete3 == true && pHsensor_string_complete2 == true) {
     //Serial.print("Testing printing, ");
     Serial.print(pHsensorstring3);
