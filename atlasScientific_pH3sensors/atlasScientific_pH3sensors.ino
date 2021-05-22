@@ -8,6 +8,7 @@
 // Each command must be preceded by what sensor it is intended for:
 // if the command is preceded by "s3:" the command is sent to the sensor connected to serial port 3
 // if the command is preceded by "s2:" the command is sent to the sensor connected to serial port 2
+// if the command is preceded by "s1:" the command is sent to the sensor connected to serial port 1
 // if the command is preceded by "AS:" the command is sent to both sensors. 
 
 String inputstring = "";                              //a string to hold incoming data from the PC
